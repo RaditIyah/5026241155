@@ -79,3 +79,11 @@ route::get('/pegawai/edit/{id}', [PegawaiDBController::class, 'edit']);
 route::post('/pegawai/update', [PegawaiDBController::class, 'update']);
 route::get('pegawai/hapus/{id}', [PegawaiDBController::class, 'hapus']);
 route::get('pegawai/cari', [PegawaiDBController::class, 'cari']);
+
+//crud untuk KeranjangBelanja
+use App\Http\Controllers\KeranjangBelanjaController;
+
+Route::get('/keranjang', [KeranjangBelanjaController::class,'index']);
+Route::get('/keranjang/tambah', [KeranjangBelanjaController::class,'tambah']);
+Route::post('/keranjang/store', [KeranjangBelanjaController::class,'store']);
+Route::get('/keranjang/hapus/{id}', [KeranjangBelanjaController::class,'hapus']);
