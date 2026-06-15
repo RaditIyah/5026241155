@@ -2,13 +2,8 @@
 @section('judul_halaman', 'Data Penggajian')
 @section('konten')
 
-    <title>Penggajian</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-</head>
-<body>
 <div class="container mt-4">
-    <h3>Penggajian</h3>
-    <a href="{{ route('penggajian.create') }}" class="btn btn-primary mb-3">Beli</a>
+    <a href="{{ route('penggajian.create') }}" class="btn btn-primary mb-3">Tambah Data</a>
 
     <table class="table table-bordered">
         <thead class="thead-dark">
@@ -22,23 +17,21 @@
         </thead>
         <tbody>
             @foreach($data as $item)
+            @php
+                $gajiBersih = $item->gajipokok - $item->potongan;
+                $persentase = ($item->gajipokok > 0)
+                    ? ($item->potongan / $item->gajipokok) * 100
+                    : 0;
+            @endphp
             <tr>
                 <td>{{ $item->nip }}</td>
-                <td>{{ $item->gajipokok }}</td>
-                <td>{{ $item->Potongan }}</td>
-                <td>Rp {{ number_format($item->gajipokok - potongan, 0, ',', '.') }}</td>
-                <td>Rp {{ number_format($item->gajibersih/gajipokok * 100%, 0, ',', '.') }}</td>
-                <td>
-                    <form action="{{ route('penggajian.destroy', $item->ID) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger btn-sm">Batal</button>
-                    </form>
-                </td>
+                <td>{{ number_format($item->gajipokok, 0, ',', '.') }}</td>
+                <td>{{ number_format($item->potongan, 0, ',', '.') }}</td>
+                <td>{{ number_format($gajiBersih, 0, ',', '.') }}</td>
+                <td>{{ number_format($persentase, 2) }}%</td>
             </tr>
             @endforeach
         </tbody>
     </table>
 </div>
-</body>
-</html>
+@endsection

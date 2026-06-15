@@ -2,56 +2,42 @@
 @section('judul_halaman', 'Data Penggajian')
 @section('konten')
 
-    <br>
-    <a href="/penggajian" class="btn btn-secondary mb-4">Kembali</a>
+<div class="container mt-4">
+    <h5>Tambah Data Penggajian</h5>
 
-    <div class="card">
-        <div class="card-header">
-            Form Tambah Data Nilai Kuliah
+    <form id="formTambah" action="{{ route('penggajian.store') }}" method="POST">
+        @csrf
+
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label">NIP</label>
+            <div class="col-sm-6">
+                <input type="text" name="nip" id="nip" class="form-control" maxlength="8" required>
+                <small id="errorNip" class="text-danger"></small>
+            </div>
         </div>
 
-        <div class="card-body">
-            <form action="/penggajian/store" method="POST">
-                {{ csrf_field() }}
-
-                <div class="row mb-3">
-                    <label for="NIP" class="col-sm-2 col-form-label">NRP</label>
-                    <div class="col-sm-10">
-                        <input type="text" name="NRP" id="nip" class="form-control" required>
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <label for="Gaji Pokok" class="col-sm-2 col-form-label">Nilai Angka</label>
-                    <div class="col-sm-10">
-                        <input type="text" name="gajipokok" id="gajipokok" class="form-control" required>
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <label for="Potongan" class="col-sm-2 col-form-label">SKS</label>
-                    <div class="col-sm-10">
-                        <input type="text" name="Potongan" id="potongan" class="form-control" required>
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <label for="Gaji Bersih" class="col-sm-2 col-form-label">SKS</label>
-                    <div class="col-sm-10">
-                        <input type="text" name="SKS" id="gajibersih" class="form-control" required>
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <label for="Persentase Potongan" class="col-sm-2 col-form-label">SKS</label>
-                    <div class="col-sm-10">
-                        <input type="text" name="SKS" id="persentase potongan" class="form-control" required>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="offset-sm-2 col-sm-10">
-                        <input type="submit" value="Simpan Data" class="btn btn-primary">
-                    </div>
-                </div>
-
-            </form>
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Gaji Pokok</label>
+            <div class="col-sm-6">
+                <input type="number" name="gajipokok" id="gajipokok" class="form-control" required>
+            </div>
         </div>
-    </div>
+
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Potongan</label>
+            <div class="col-sm-6">
+                <input type="number" name="potongan" id="potongan" class="form-control" required>
+                <small id="errorPotongan" class="text-danger"></small>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-6 offset-sm-3">
+                <button type="submit" class="btn btn-success">Simpan</button>
+                <a href="{{ route('penggajian.index') }}" class="btn btn-secondary">Kembali</a>
+            </div>
+        </div>
+    </form>
+</div>
+
 @endsection

@@ -94,8 +94,8 @@ Route::get('/nilaikuliah/tambah', [NilaiKuliahController::class, 'tambah'])->nam
 Route::post('/nilaikuliah/store', [NilaiKuliahController::class, 'store'])->name('nilaikuliah.store');
 
 //eas - penggajian
-Route::get('/penggajian', [PenggajianController::class, 'index'])->name('penggajian.index');
-Route::get('/penggajian/beli', [PenggajianController::class, 'create'])->name('penggajian.create');
-Route::post('/penggajian', [PenggajianController::class, 'store'])->name('penggajian.store');
-Route::delete('/penggajian/{nip}', [PenggajianController::class, 'destroy'])->name('penggajian.destroy');
+use App\Http\Controllers\PenggajianController;
+Route::get('/eas',              [PenggajianController::class, 'index'])->name('penggajian.index');
+Route::get('/eas/tambah',       [PenggajianController::class, 'create'])->name('penggajian.create');
+Route::post('/eas/store',       [PenggajianController::class, 'store'])->name('penggajian.store');
 

@@ -4,9 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class KeranjangBelanja extends Model
+class penggajian extends Model
 {
     protected $table = 'penggajian';
-    protected $fillable = ['NIP', 'Gaji Pokok', 'Potongan','Gaji Bersih','Persentase Potongan'];
+    protected $primaryKey = 'nip';
+    public $incrementing = false;   // primary key bukan auto increment
+    protected $keyType = 'string';  // primary key bertipe string (CHAR)
     public $timestamps = false;
+
+    protected $fillable = ['nip', 'gajipokok', 'potongan'];
 }
