@@ -8,8 +8,8 @@ class penggajian extends Model
 {
     protected $table = 'penggajian';
     protected $primaryKey = 'nip';
-    public $incrementing = false;   // primary key bukan auto increment
-    protected $keyType = 'string';  // primary key bertipe string (CHAR)
+    public $incrementing = false;  
+    protected $keyType = 'string';
     public $timestamps = false;
 
     protected $fillable = ['nip', 'gajipokok', 'potongan'];
