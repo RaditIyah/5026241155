@@ -48,6 +48,10 @@ Route::get('template', function () {
     return view('template');
 });
 
+Route::get('/', function () {
+    return redirect()->route('keranjang.index');
+});
+
 // pertemuan 9 asinkron
 Route::get('/pegawailama/{nama}', [PegawaiController::class, 'index']); // jangan lupa diganti
 Route::get('/formulir', [PegawaiController::class, 'formulir']);
@@ -88,3 +92,10 @@ Route::delete('/keranjangbelanja/{id}', [KeranjangBelanjaController::class, 'des
 Route::get('/nilaikuliah', [NilaiKuliahController::class, 'indexnilaikuliah'])->name('nilaikuliah.indexnilaikuliah');
 Route::get('/nilaikuliah/tambah', [NilaiKuliahController::class, 'tambah'])->name('nilaikuliah.tambah');
 Route::post('/nilaikuliah/store', [NilaiKuliahController::class, 'store'])->name('nilaikuliah.store');
+
+//eas - penggajian
+Route::get('/penggajian', [PenggajianController::class, 'index'])->name('penggajian.index');
+Route::get('/penggajian/beli', [PenggajianController::class, 'create'])->name('penggajian.create');
+Route::post('/penggajian', [PenggajianController::class, 'store'])->name('penggajian.store');
+Route::delete('/penggajian/{nip}', [PenggajianController::class, 'destroy'])->name('penggajian.destroy');
+
